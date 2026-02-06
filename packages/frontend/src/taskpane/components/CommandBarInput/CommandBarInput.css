@@ -1,0 +1,408 @@
+/* White Theme Compact Layout */
+.command-bar-input.dark-theme {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 16px;
+  background: white;
+  border-top: 1px solid #e5e5e5;
+  width: 100%;
+  min-width: 0;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+/* Input Field - Top with Integrated Selectors */
+.command-bar-input-wrapper {
+  width: 100%;
+  min-width: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.command-bar-textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 40px;
+  max-height: 200px;
+  padding: 10px 12px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: none;
+  outline: none;
+  transition: border-color 0.2s ease;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #fafafa;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.command-bar-textarea::placeholder {
+  color: #999;
+}
+
+.command-bar-textarea:focus {
+  border-color: #4f46e5;
+  background: white;
+}
+
+.command-bar-textarea:disabled {
+  background: #f5f5f5;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Controls Row - All controls on one line */
+.command-bar-controls-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+  width: 100%;
+  min-width: 0;
+}
+
+.command-bar-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* Mode Selector - Dark Grey Pill */
+.command-bar-selector-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.command-bar-mode-btn.dark {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.command-bar-mode-btn.dark.model-selector {
+  border: none;
+  background: transparent;
+  padding: 6px 8px;
+}
+
+.command-bar-mode-btn.dark.model-selector:hover {
+  background: transparent;
+  border: none;
+}
+
+.command-bar-environment-inline {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.command-bar-environment-inline .environment-selector {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.command-bar-environment-inline .environment-selector-btn {
+  border: none;
+  background: transparent;
+  padding: 6px 8px;
+}
+
+.command-bar-environment-inline .environment-selector-btn:hover {
+  background: #f5f5f5;
+  border: none;
+}
+
+.command-bar-mode-btn.dark:hover:not(:disabled) {
+  background: #f5f5f5;
+  border-color: #d1d5db;
+}
+
+.command-bar-mode-btn.dark:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.command-bar-mode-btn.dark svg {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  color: #666;
+}
+
+.command-bar-cycle-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 16px;
+  padding: 0 4px;
+  background: #4f46e5;
+  color: white;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  margin-left: 2px;
+}
+
+/* Action Buttons - White Theme */
+.command-bar-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.command-bar-action-btn.dark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+  border-radius: 6px;
+}
+
+.command-bar-action-btn.dark:hover:not(:disabled) {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.command-bar-action-btn.dark:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.command-bar-action-btn.dark.active {
+  background: #f5f5f5;
+  color: #4f46e5;
+}
+
+.command-bar-action-btn.dark label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.command-bar-context-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+}
+
+.command-bar-send-btn.dark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: #4f46e5;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  padding: 0;
+}
+
+.command-bar-send-btn.dark:hover:not(:disabled) {
+  background: #4338ca;
+}
+
+.command-bar-send-btn.dark:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Dropdown - White Theme */
+.command-bar-dropdown.dark {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  margin-bottom: 4px;
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  min-width: 150px;
+  max-height: 300px;
+  overflow-y: auto;
+  animation: slideDown 0.2s ease-out;
+}
+
+.command-bar-dropdown.dark.model-dropdown {
+  min-width: 200px;
+  max-height: 400px;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.command-bar-dropdown-item.dark {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-size: 13px;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.command-bar-dropdown-item.dark:hover {
+  background: #f5f5f5;
+}
+
+.command-bar-dropdown-item.dark.active {
+  background: #e5e5e5;
+  font-weight: 500;
+}
+
+.command-bar-dropdown-item.dark svg {
+  flex-shrink: 0;
+  color: #666;
+}
+
+/* Model Selector Popup - White Theme */
+.command-bar-model-selector-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.command-bar-model-selector-popup {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 400px;
+  max-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e5e5e5;
+}
+
+.command-bar-model-selector-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.command-bar-model-selector-header span {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+.command-bar-model-selector-header button {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.command-bar-model-selector-header button:hover {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.command-bar-model-list {
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.command-bar-model-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-size: 13px;
+  color: #333;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.command-bar-model-item:hover {
+  background: #f5f5f5;
+}
+
+.command-bar-model-item.active {
+  background: #e5e5e5;
+  font-weight: 500;
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

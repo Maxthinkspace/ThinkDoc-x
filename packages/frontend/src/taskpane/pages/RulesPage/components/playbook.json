@@ -1,0 +1,75 @@
+[
+  {
+    "rules": [
+      {
+        "type": "Rules for Instruction Requests",
+        "rules": [
+          {
+            "rule_number": "IR1",
+            "instruction": "Please confirm the timeframe for issuing new share certificates to the Buyer after Completion.",
+            "contract_clause": "The Seller shall procure that, within 7 days after Completion, the Company shall issue new share certificates to the Buyer in respect of the Sale Shares."
+          }
+        ]
+      },
+      {
+        "type": "Rules for Contract Amendments",
+        "rules": [
+          {
+            "rule_number": "CA1",
+            "instruction": "Replace the phrase “as soon as possible” with “as soon as reasonably practicable” in the provision requiring the seller to use reasonable endeavours to procure the company’s board of directors to approve the share transfer.",
+            "example_language": "The Seller shall use reasonable endeavors to procure that the board of directors of the Company meets to consider the approval of the transfer of the Sale Shares as soon as reasonably practicable after submission of the duly stamped Instrument of Transfer and the original share certificates.",
+            "contract_clause": "The Seller shall use reasonable endeavors to procure that the board of directors of the Company meets to consider the approval of the transfer of the Sale Shares as soon as reasonably practicable after submission of the duly stamped Instrument of Transfer and the original share certificates."
+          },
+          {
+            "rule_number": "CA2",
+            "instruction": "Insert the qualifier “in all material respects” in each representation within the warranties section that states the company’s compliance with applicable laws.",
+            "example_language": "The Company is in all material respects in compliance with all applicable laws, rules, regulations and ordinances applicable to its business, operations, or assets;",
+            "contract_clause": "The Company is in all material respects in compliance with all applicable laws, rules, regulations and ordinances applicable to its business, operations, or assets;"
+          },
+          {
+            "rule_number": "CA3",
+            "instruction": "Retain the qualifier “in all material respects” in the condition precedent that requires the seller’s warranties to be true and correct at completion.",
+            "example_language": "The representations and warranties made by the Seller in this Agreement shall be true and correct in all material respects as of the Completion Date, as though made at that time.",
+            "contract_clause": "The representations and warranties made by the Seller in this Agreement shall be true and correct in all material respects as of the Completion Date, as though made at that time."
+          },
+          {
+            "rule_number": "CA4",
+            "instruction": "Require that any disclosure of confidential information to third parties in the confidentiality clause be conditioned on obtaining the disclosing party’s written consent.",
+            "example_language": "disclose the Confidential Information to any third party without the written consent of the Disclosing Party",
+            "contract_clause": "1.1. The Receiving Party shall not, at any time before or after Completion: 1.1.1. use the Confidential Information for any purpose other than evaluating, negotiating, and performing this Agreement; or 1.1.2. disclose the Confidential Information to any third party without the written consent of the Disclosing Party, except: 1.1.2.1. to its directors, officers, employees, agents, and professional advisers, and its affiliates’ directors, officers, employees, agents, and professional advisers (collectively, the “Permitted Recipients”), on a need-to-know basis, provided that they are bound by similar confidentiality obligations. The Receiving Party shall ensure that all Permitted Recipients are informed of the confidential nature of the Confidential Information and take all commercially reasonable measures to prevent unauthorized use or disclosure. The Receiving Party remains responsible for any breach of confidentiality by its Permitted Recipients; and"
+          },
+          {
+            "rule_number": "CA5",
+            "instruction": "Require that any disclosure of confidential information to permitted recipients in the confidentiality clause be limited to individuals who need the information to perform their duties.",
+            "example_language": "on a need-to-know basis",
+            "contract_clause": "1.1. The Receiving Party shall not, at any time before or after Completion: 1.1.1. use the Confidential Information for any purpose other than evaluating, negotiating, and performing this Agreement; or 1.1.2. disclose the Confidential Information to any third party without the written consent of the Disclosing Party, except: 1.1.2.1. to its directors, officers, employees, agents, and professional advisers, and its affiliates’ directors, officers, employees, agents, and professional advisers (collectively, the “Permitted Recipients”), on a need-to-know basis, provided that they are bound by similar confidentiality obligations. The Receiving Party shall ensure that all Permitted Recipients are informed of the confidential nature of the Confidential Information and take all commercially reasonable measures to prevent unauthorized use or disclosure. The Receiving Party remains responsible for any breach of confidentiality by its Permitted Recipients; and"
+          },
+          {
+            "rule_number": "CA6",
+            "instruction": "Delete any mandatory negotiation or waiting period set out in the dispute resolution clause before commencing arbitration.",
+            "example_language": "If the dispute cannot be resolved through negotiation within 30 days from the date on which one Party provides written notice of the dispute to the other Party,",
+            "contract_clause": "Arbitration. The dispute shall be referred to and finally resolved by arbitration in accordance with the Singapore International Arbitration Centre (the “SIAC”) Rules, as in force at the time of the commencement of the arbitration."
+          }
+        ]
+      },
+      {
+        "type": "Conditional Rules for Contract Amendments",
+        "rules": [
+          {
+            "rule_number": "CA7",
+            "instruction": "Where the target is a technology company, expand the definition of confidential information in the confidentiality provision to include research, development, software, source code, algorithms, designs, processes, methodologies, systems, inventions, technical specifications, and drawings of the company.",
+            "example_language": "“Confidential Information” means any proprietary information, trade secrets, know-how, or any other information related to the business, financial condition, or operations of the Company, including but not limited to business plans, financial information, marketing strategies, pricing, customer lists, customer details, sales data, supplier information, contracts, assets, liabilities, employee information, research, development, software, source code, algorithms, designs, processes, methodologies, systems, inventions, technical specifications, and drawings of the Company.",
+            "contract_clause": "“Confidential Information” means any proprietary information, trade secrets, know-how, or any other information related to the business, financial condition, or operations of the Company, including but not limited to business plans, financial information, marketing strategies, pricing, customer lists, customer details, sales data, supplier information, contracts, assets, liabilities, and employee information."
+          }
+        ]
+      }
+    ],
+    "playbookName": "Test Playbook",
+    "description": "Test Playbook",
+    "playbookType": "review",
+    "userPosition": "Neutral",
+    "jurisdiction": "Singapore",
+    "tags": "demo",
+    "savedAt": "2025-09-16T00:00:00.000Z"
+  }
+]

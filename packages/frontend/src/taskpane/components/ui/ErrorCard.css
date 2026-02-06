@@ -1,0 +1,80 @@
+.error-card {
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.error-card-error {
+  background-color: #ffebee;
+  border-color: #ef5350;
+  color: #c62828;
+}
+
+.error-card-warning {
+  background-color: #fff3e0;
+  border-color: #ff9800;
+  color: #e65100;
+}
+
+.error-card-info {
+  background-color: #e3f2fd;
+  border-color: #2196f3;
+  color: #1565c0;
+}
+
+.error-card-content {
+  flex: 1;
+}
+
+.error-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+.error-card-message {
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.error-card-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.error-card-retry,
+.error-card-dismiss {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.error-card-retry {
+  background-color: #1976d2;
+  color: white;
+}
+
+.error-card-retry:hover {
+  opacity: 0.9;
+}
+
+.error-card-dismiss {
+  background-color: transparent;
+  color: inherit;
+  border: 1px solid currentColor;
+}
+
+.error-card-dismiss:hover {
+  opacity: 0.8;
+}
+

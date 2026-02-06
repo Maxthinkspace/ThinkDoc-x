@@ -1,0 +1,211 @@
+/**
+ * SelectedClauseCard.css
+ * 
+ * Styles for the SelectedClauseCard component.
+ * Note: Annotation display styles (track changes, comments, highlights) are
+ * handled by the AnnotationDisplay component via Fluent UI makeStyles.
+ */
+
+/* ============================================================================
+   CARD CONTAINER
+   ============================================================================ */
+
+.selected-clause-card {
+  background: white;
+  border: 1px solid #EEEFF1;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  overflow: visible;
+  transition: all 0.2s ease;
+}
+
+.selected-clause-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* ============================================================================
+   HEADER
+   ============================================================================ */
+
+.selected-clause-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.selected-clause-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.selected-clause-header-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.selected-clause-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #1D1D1F;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.selected-clause-source {
+  font-size: 12px;
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ============================================================================
+   ANNOTATION BADGES (in header)
+   ============================================================================ */
+
+.selected-clause-annotations-badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.annotation-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 500;
+  background: #F5F5F7;
+  color: #1D1D1F;
+}
+
+.track-change-badge {
+  background: #FFF4E6;
+  color: #8B4513;
+}
+
+.comment-badge {
+  background: #E6F3FF;
+  color: #0066CC;
+}
+
+.highlight-badge {
+  background: #FFFACD;
+  color: #8B6914;
+}
+
+/* ============================================================================
+   TOGGLE BUTTON
+   ============================================================================ */
+
+.selected-clause-toggle {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.selected-clause-toggle:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* ============================================================================
+   EXPANDED CONTENT
+   ============================================================================ */
+
+.selected-clause-content {
+  padding: 0 20px 16px 20px;
+  border-top: 1px solid #EEEFF1;
+  margin-top: 12px;
+  padding-top: 16px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.selected-clause-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 11px;
+  color: #999;
+  font-style: italic;
+}
+
+/* ============================================================================
+   DARK MODE
+   ============================================================================ */
+
+@media (prefers-color-scheme: dark) {
+  .selected-clause-card {
+    background: rgba(28, 28, 30, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .selected-clause-card-header {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .selected-clause-label {
+    color: #f5f5f7;
+  }
+
+  .selected-clause-source {
+    color: #a1a1a6;
+  }
+
+  .annotation-badge {
+    background: rgba(255, 255, 255, 0.1);
+    color: #f5f5f7;
+  }
+
+  .track-change-badge {
+    background: rgba(255, 193, 7, 0.2);
+    color: #FFC107;
+  }
+
+  .comment-badge {
+    background: rgba(0, 113, 227, 0.2);
+    color: #5AC8FA;
+  }
+
+  .highlight-badge {
+    background: rgba(255, 250, 205, 0.2);
+    color: #FFD700;
+  }
+
+  .selected-clause-toggle {
+    color: #a1a1a6;
+  }
+
+  .selected-clause-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .selected-clause-content {
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .selected-clause-location {
+    color: #86868b;
+  }
+}

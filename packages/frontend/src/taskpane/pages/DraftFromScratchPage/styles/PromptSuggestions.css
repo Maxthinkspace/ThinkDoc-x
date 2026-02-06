@@ -1,0 +1,22 @@
+/* Prompt Suggestions Styles */
+
+/* Ensure chips don't truncate text */
+.general-source-chip,
+[class*="chip"] {
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  min-width: fit-content !important;
+}
+
+/* Ensure selected chips have visible text */
+[class*="chipSelected"],
+[class*="chip-selected"] {
+  color: #fff !important;
+}
+
+/* Ensure draft type buttons have visible text */
+[class*="draftTypeButtonActive"],
+[class*="draft-type-button-active"] {
+  color: #fff !important;
+}

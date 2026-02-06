@@ -1,0 +1,1 @@
+export { SelectedClauseCard } from './SelectedClauseCard';

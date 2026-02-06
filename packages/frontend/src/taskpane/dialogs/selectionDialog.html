@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ThinkDoc – Selection Actions</title>
+    <style>
+      :root {
+        --bg: #f2f2f7;
+        --surface: rgba(255, 255, 255, 0.82);
+        --surface-solid: #ffffff;
+        --text: #111827;
+        --muted: rgba(60, 60, 67, 0.6);
+        --border: rgba(60, 60, 67, 0.18);
+        --shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        --accent: #0a84ff;
+        --accent-pressed: #0060df;
+        --radius: 14px;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #000000;
+          --surface: rgba(28, 28, 30, 0.85);
+          --surface-solid: #1c1c1e;
+          --text: rgba(255, 255, 255, 0.92);
+          --muted: rgba(235, 235, 245, 0.6);
+          --border: rgba(235, 235, 245, 0.16);
+          --shadow: 0 14px 50px rgba(0, 0, 0, 0.6);
+          --accent: #0a84ff;
+          --accent-pressed: #0060df;
+        }
+      }
+
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue",
+          Arial, "Noto Sans", "Liberation Sans", sans-serif;
+        color: var(--text);
+        background: radial-gradient(1200px 800px at 20% -10%, rgba(10, 132, 255, 0.18), transparent 60%),
+          radial-gradient(1200px 800px at 110% 40%, rgba(88, 86, 214, 0.14), transparent 55%), var(--bg);
+      }
+
+      .window {
+        padding: 12px;
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        overflow: hidden;
+      }
+
+      .titlebar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 12px 10px 12px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .titlebar h1 {
+        margin: 0;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+
+      .closeBtn {
+        width: 26px;
+        height: 26px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: var(--surface-solid);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+      }
+
+      .closeBtn:hover {
+        filter: brightness(0.98);
+      }
+
+      .closeBtn:active {
+        filter: brightness(0.95);
+      }
+
+      .closeBtn svg {
+        width: 14px;
+        height: 14px;
+        opacity: 0.75;
+      }
+
+      .tools {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .toolBtn {
+        width: 26px;
+        height: 26px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: var(--surface-solid);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+      }
+
+      .toolBtn:hover {
+        filter: brightness(0.98);
+      }
+
+      .toolBtn:active {
+        filter: brightness(0.95);
+      }
+
+      .toolBtn svg {
+        width: 14px;
+        height: 14px;
+        opacity: 0.75;
+      }
+
+      .content {
+        padding: 12px;
+      }
+
+      .preview {
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.55);
+        border-radius: 12px;
+        padding: 10px 10px;
+        font-size: 12px;
+        line-height: 1.4;
+        max-height: 110px;
+        overflow: auto;
+        white-space: pre-wrap;
+        color: var(--text);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .preview {
+          background: rgba(28, 28, 30, 0.6);
+        }
+      }
+
+      .sectionTitle {
+        margin: 12px 2px 8px 2px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+      }
+
+      .group {
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.65);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .group {
+          background: rgba(28, 28, 30, 0.65);
+        }
+      }
+
+      button {
+        appearance: none;
+        border: 0;
+        background: transparent;
+        padding: 0;
+        font: inherit;
+        color: inherit;
+      }
+
+      .action {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        cursor: pointer;
+      }
+
+      .action + .action {
+        border-top: 1px solid var(--border);
+      }
+
+      .action:hover {
+        background: rgba(10, 132, 255, 0.06);
+      }
+
+      .action:active {
+        background: rgba(10, 132, 255, 0.1);
+      }
+
+      .icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        background: rgba(10, 132, 255, 0.12);
+        border: 1px solid rgba(10, 132, 255, 0.18);
+        flex: 0 0 auto;
+      }
+
+      .icon svg {
+        width: 16px;
+        height: 16px;
+        color: var(--accent);
+      }
+
+      .meta {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        flex: 1 1 auto;
+      }
+
+      .label {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .desc {
+        margin-top: 2px;
+        font-size: 11px;
+        color: var(--muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .chev {
+        color: var(--muted);
+        font-size: 16px;
+        font-weight: 600;
+        flex: 0 0 auto;
+      }
+
+      .focusRing:focus-visible {
+        outline: 3px solid rgba(10, 132, 255, 0.35);
+        outline-offset: 2px;
+      }
+
+      .hint {
+        margin-top: 10px;
+        font-size: 11px;
+        color: var(--muted);
+        line-height: 1.35;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="window">
+      <div class="card">
+        <div class="titlebar">
+          <h1>Selection Actions</h1>
+          <div class="tools">
+            <button id="refresh" class="toolBtn focusRing" aria-label="Refresh selection">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M16 10a6 6 0 10-1.4 3.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M16 6v4h-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button id="close" class="closeBtn focusRing" aria-label="Close">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M6 6l8 8M14 6l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="sectionTitle">SELECTED TEXT</div>
+          <div id="preview" class="preview">Waiting for selection…</div>
+
+          <div class="sectionTitle">ACTIONS</div>
+          <div class="group">
+            <button id="ask" class="action focusRing" aria-label="Ask AI">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none">
+                  <path d="M4 5.5a3.5 3.5 0 013.5-3.5h5A3.5 3.5 0 0116 5.5v4A3.5 3.5 0 0112.5 13H8l-3.2 2.4A.8.8 0 013.5 14.8V13A3.5 3.5 0 014 9.5v-4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="meta">
+                <span class="label">Ask AI</span>
+                <span class="desc">Ask about the selected clause</span>
+              </span>
+              <span class="chev" aria-hidden="true">›</span>
+            </button>
+
+            <button id="translate" class="action focusRing" aria-label="Translate">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none">
+                  <path d="M3 5h6M6 5v2c0 2.2-1.8 4-4 4m4-4c.5 1.8 2.2 3.6 4 4M11 15l3-8 3 8m-4.2-2h2.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="meta">
+                <span class="label">Translate</span>
+                <span class="desc">Translate into another language</span>
+              </span>
+              <span class="chev" aria-hidden="true">›</span>
+            </button>
+
+            <button id="autoComment" class="action focusRing" aria-label="Auto Comment">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none">
+                  <path d="M7.5 10.5l1.6 1.6L13 8.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M4 5.5A3.5 3.5 0 017.5 2h5A3.5 3.5 0 0116 5.5v4A3.5 3.5 0 0112.5 13H8l-3.2 2.4A.8.8 0 013.5 14.8V13A3.5 3.5 0 014 9.5v-4z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="meta">
+                <span class="label">Auto Comment</span>
+                <span class="desc">Apply playbook-based comments</span>
+              </span>
+              <span class="chev" aria-hidden="true">›</span>
+            </button>
+
+            <button id="saveClause" class="action focusRing" aria-label="Save as Clause">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none">
+                  <path d="M6 3h7l2 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                  <path d="M7 3v6h6V3" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="meta">
+                <span class="label">Save as Clause</span>
+                <span class="desc">Store in your Vault library</span>
+              </span>
+              <span class="chev" aria-hidden="true">›</span>
+            </button>
+          </div>
+
+          <div class="hint">
+            This window can’t be positioned exactly above the selection, but it stays visible outside the taskpane.
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+

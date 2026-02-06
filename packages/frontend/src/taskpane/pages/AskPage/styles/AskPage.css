@@ -1,0 +1,145 @@
+.ask-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  /* Glass overlay effect - allows Word document to show through */
+  background: rgba(249, 246, 246, 0.85);
+  backdrop-filter: blur(30px) saturate(200%) brightness(110%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(110%);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  position: relative;
+}
+
+.ask-page-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  /* Glass effect header */
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(30px) saturate(200%) brightness(110%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(110%);
+  border-bottom: 0.5px solid rgba(238, 239, 241, 0.5);
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.ask-page-back-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: #FAFAFA;
+  border: 1px solid #EEEFF1;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.ask-page-back-button:hover {
+  background: #f0f0f0;
+  border-color: #ddd;
+}
+
+.ask-page-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+  flex: 1;
+}
+
+.ask-page-content {
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+}
+
+.ask-page-activity-selector {
+  padding: 12px 20px;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(238, 239, 241, 0.5);
+  background: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ask-page-tips-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.ask-page-tips-button:hover {
+  background: #f5f5f5;
+  border-color: #d1d5db;
+  color: #333;
+}
+
+/* Override ThinkDocPanel styles for page context */
+.ask-page-content .thinkdoc-panel {
+  height: 100%;
+  padding: 20px;
+  /* Glass effect content area */
+  background: rgba(249, 246, 246, 0.7);
+  backdrop-filter: blur(20px) saturate(180%) brightness(105%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(105%);
+}
+
+/* Loading state - white background instead of glass effect */
+.ask-page.ask-page-loading {
+  background: #ffffff;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.ask-page-loading-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Loading card - matches Module 1 Playbook style */
+.ask-page-loading-card {
+  background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+  border-radius: 10px;
+  padding: 22px 26px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.12);
+  border: 1px solid rgba(230,232,235,0.6);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.ask-page-loading-title {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.ask-page-loading-text {
+  margin: 16px 0 0 0;
+  font-size: 14px;
+  color: #666;
+}

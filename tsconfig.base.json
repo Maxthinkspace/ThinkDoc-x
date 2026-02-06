@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "allowUnusedLabels": false,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitReturns": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "pretty": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "typeRoots": ["node_modules/@types"]
+  },
+  "exclude": ["node_modules", "dist", "coverage"]
+}

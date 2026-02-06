@@ -1,0 +1,116 @@
+/* RedactAlert.css - styles to match the provided image */
+
+:root{
+  --bg: #fdf7ef;         /* light beige background */
+  --banner-border: rgba(0,0,0,0.02);
+  --icon-orange: #FFF7E8; /* orange used in icon */
+  --text: #333;
+  --muted: #666;
+  --switch-off: #e6e6e6;
+  --switch-on: #4caf50;
+  --switch-thumb: #ffffff;
+  --shadow: 0 1px 0 rgba(0,0,0,0.02);
+  --radius: 10px;
+  --height: 40px;
+  font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* container */
+.ra-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 8px 12px;
+  height: var(--height);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--banner-border);
+  gap: 6px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+/* left part (icon + text) */
+.ra-left {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+  min-width: 0; /* allow text truncation */
+}
+
+.ra-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+}
+
+/* text */
+.ra-text {
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* switch button */
+.ra-switch {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px; /* container width to match small toggle */
+  height: 28px;
+  border-radius: 999px;
+  transition: transform 120ms ease;
+}
+
+/* clickable track */
+.ra-switch-track {
+  position: relative;
+  width: 44px;
+  height: 20px;
+  background: var(--switch-off);
+  border-radius: 999px;
+  display: inline-block;
+  box-shadow: inset 0 1px 0 rgba(0,0,0,0.03);
+  transition: background-color 160ms ease, box-shadow 160ms ease;
+}
+
+/* knob */
+.ra-switch-thumb {
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--switch-thumb);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.12);
+  transition: left 160ms cubic-bezier(.2,.9,.3,1), transform 160ms ease;
+}
+
+/* ON state */
+.ra-switch.ra-switch-on .ra-switch-track {
+  background: var(--switch-on);
+}
+
+.ra-switch.ra-switch-on .ra-switch-thumb {
+  left: calc(100% - 18px); /* move right */
+}
+
+/* focus styles for accessibility */
+.ra-switch:focus .ra-switch-track {
+  box-shadow: 0 0 0 3px rgba(77, 144, 255, 0.14);
+}

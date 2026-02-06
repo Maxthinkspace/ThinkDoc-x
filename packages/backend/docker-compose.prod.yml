@@ -1,0 +1,128 @@
+# Production Docker Compose
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: office-postgres-prod
+    environment:
+      POSTGRES_USER: ${DATABASE_USER:-office_user}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME:-office_addin_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_prod_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DATABASE_USER:-office_user} -d ${DATABASE_NAME:-office_addin_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - office-network
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
+
+  # Redis
+  redis:
+    image: redis:7-alpine
+    container_name: office-redis-prod
+    volumes:
+      - redis_prod_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - office-network
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+
+  # Backend API
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: office-api-prod
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://${DATABASE_USER:-office_user}:${DATABASE_PASSWORD}@postgres:5432/${DATABASE_NAME:-office_addin_db}
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: ${JWT_SECRET}
+      CORS_ORIGIN: ${CORS_ORIGIN}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+    ports:
+      - "3003:3003"
+      - "9464:9464"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3003/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - office-network
+    restart: unless-stopped
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          memory: 256M
+        reservations:
+          memory: 128M
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: office-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./docker/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - api
+    networks:
+      - office-network
+    restart: unless-stopped
+
+  # Prometheus
+  prometheus:
+    image: prom/prometheus:v2.45.0
+    container_name: office-prometheus-prod
+    volumes:
+      - ./docker/prometheus.prod.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_prod_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=30d'
+    networks:
+      - office-network
+    restart: unless-stopped
+
+volumes:
+  postgres_prod_data:
+  redis_prod_data:
+  prometheus_prod_data:
+
+networks:
+  office-network:
+    driver: bridge

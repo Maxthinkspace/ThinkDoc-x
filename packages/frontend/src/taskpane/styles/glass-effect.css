@@ -1,0 +1,276 @@
+/* Global Liquid Glass Effect for All Pages and Buttons */
+
+/* Apply glass effect ONLY to selected tabs and buttons (not active items by default) */
+button[aria-selected="true"],
+.fui-Button[aria-selected="true"],
+[class*="Button"][aria-selected="true"] {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(30px) saturate(200%) brightness(110%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(110%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: #1a1a1a !important;
+  font-weight: 600 !important;
+  box-shadow: 
+    0 6px 24px rgba(0, 0, 0, 0.1),
+    0 2px 6px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+    inset 1px 0 0 rgba(255, 255, 255, 0.4),
+    inset -1px 0 0 rgba(255, 255, 255, 0.2) !important;
+  transition: all 0.3s ease !important;
+}
+
+button[aria-selected="true"]:hover,
+.fui-Button[aria-selected="true"]:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 4px 10px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.3),
+    inset 1px 0 0 rgba(255, 255, 255, 0.5),
+    inset -1px 0 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Apply glass effect ONLY on hover for active items (not by default) */
+.analysis-item.active:hover,
+.understand-item.active:hover,
+.draft-item.active:hover,
+.vault-item.active:hover,
+.action-row.active:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(30px) saturate(200%) brightness(110%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(110%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 
+    0 6px 24px rgba(0, 0, 0, 0.1),
+    0 2px 6px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+    inset 1px 0 0 rgba(255, 255, 255, 0.4),
+    inset -1px 0 0 rgba(255, 255, 255, 0.2) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Apply glass effect to tabs */
+.fui-Tab[aria-selected="true"],
+.fui-Tab.active,
+[class*="Tab"][aria-selected="true"] {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(30px) saturate(200%) brightness(110%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(110%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    0 1px 4px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+    inset 1px 0 0 rgba(255, 255, 255, 0.4),
+    inset -1px 0 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Apply glass effect to cards and containers ONLY on hover or when explicitly selected */
+[class*="Card"][class*="selected"]:hover,
+[class*="Card"][class*="selected"],
+[class*="card"][class*="selected"]:hover,
+[class*="card"][class*="selected"],
+.card.selected:hover,
+.card.selected,
+.playbook-card.active:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(30px) saturate(200%) brightness(110%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(110%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+    inset 1px 0 0 rgba(255, 255, 255, 0.4),
+    inset -1px 0 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Apply glass effect on hover for interactive items (only if not already handled above) */
+.playbook-card:hover,
+[class*="Card"]:hover:not(.disabled):not(.active),
+button:hover:not(:disabled):not([class*="disabled"]):not([aria-selected="true"]):not(.active):not(.pg-generate-btn):not(.create-dropdown-trigger):not(.brand-btn) {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(25px) saturate(180%) brightness(105%) !important;
+  -webkit-backdrop-filter: blur(25px) saturate(180%) brightness(105%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    0 1px 4px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.15),
+    inset 1px 0 0 rgba(255, 255, 255, 0.3),
+    inset -1px 0 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Apply glass effect to dropdown items when selected */
+.fui-Option[aria-selected="true"],
+.fui-Option.selected,
+[class*="Option"][aria-selected="true"],
+[class*="dropdown-item"][class*="selected"] {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(30px) saturate(200%) brightness(110%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(110%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    0 1px 4px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+    inset 1px 0 0 rgba(255, 255, 255, 0.4),
+    inset -1px 0 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Apply glass effect to checkboxes when checked */
+input[type="checkbox"]:checked + *,
+.fui-Checkbox[aria-checked="true"] {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(20px) saturate(200%) brightness(110%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(200%) brightness(110%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Apply glass effect to primary buttons */
+.fui-Button[data-appearance="primary"]:not(:disabled):not(.brand-btn),
+button[data-appearance="primary"]:not(:disabled):not(.brand-btn),
+[class*="primary"]:not(:disabled):not(.brand-btn) {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(30px) saturate(200%) brightness(110%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(110%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: #1a1a1a !important;
+  box-shadow: 
+    0 6px 24px rgba(0, 0, 0, 0.1),
+    0 2px 6px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+    inset 1px 0 0 rgba(255, 255, 255, 0.4),
+    inset -1px 0 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.fui-Button[data-appearance="primary"]:hover:not(:disabled):not(.brand-btn),
+button[data-appearance="primary"]:hover:not(:disabled):not(.brand-btn) {
+  background: rgba(255, 255, 255, 0.2) !important;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 4px 10px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.3),
+    inset 1px 0 0 rgba(255, 255, 255, 0.5),
+    inset -1px 0 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Apply glass effect to navigation items */
+[class*="nav"] [class*="active"],
+[class*="Nav"] [class*="active"],
+nav [class*="active"] {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(30px) saturate(200%) brightness(110%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(110%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    0 1px 4px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+    inset 1px 0 0 rgba(255, 255, 255, 0.4),
+    inset -1px 0 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Apply glass effect to chips/badges when selected */
+[class*="Chip"][class*="selected"],
+[class*="chip"][class*="selected"],
+[class*="Badge"][class*="selected"],
+[class*="badge"][class*="selected"] {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(30px) saturate(200%) brightness(110%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(110%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    0 1px 4px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+    inset 1px 0 0 rgba(255, 255, 255, 0.4),
+    inset -1px 0 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Apply glass effect to list items when selected */
+[class*="ListItem"][class*="selected"],
+[class*="list-item"][class*="selected"],
+li[aria-selected="true"],
+li.selected {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(30px) saturate(200%) brightness(110%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(110%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    0 1px 4px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+    inset 1px 0 0 rgba(255, 255, 255, 0.4),
+    inset -1px 0 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Ensure text is readable on glass backgrounds */
+button[aria-selected="true"],
+button.active,
+.fui-Button[aria-selected="true"],
+.fui-Button.active,
+[class*="Tab"][aria-selected="true"],
+[class*="Card"][class*="active"],
+[class*="Option"][aria-selected="true"] {
+  color: #1a1a1a !important;
+}
+
+/* Apply glass effect to Fluent UI primary buttons */
+.fui-Button[data-appearance="primary"]:not(:disabled):not(.brand-btn) {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(30px) saturate(200%) brightness(110%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(110%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: #1a1a1a !important;
+  box-shadow: 
+    0 6px 24px rgba(0, 0, 0, 0.1),
+    0 2px 6px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+    inset 1px 0 0 rgba(255, 255, 255, 0.4),
+    inset -1px 0 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.fui-Button[data-appearance="primary"]:hover:not(:disabled):not(.brand-btn) {
+  background: rgba(255, 255, 255, 0.2) !important;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 4px 10px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.3),
+    inset 1px 0 0 rgba(255, 255, 255, 0.5),
+    inset -1px 0 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Smooth transitions for all glass effects */
+button,
+.fui-Button,
+.fui-Tab,
+[class*="Card"],
+[class*="Option"],
+[class*="Chip"],
+[class*="ListItem"],
+.analysis-item,
+.understand-item,
+.draft-item,
+.vault-item {
+  transition: all 0.3s ease !important;
+}
+

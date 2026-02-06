@@ -1,0 +1,118 @@
+# Development Docker Compose
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: office-postgres-dev
+    environment:
+      POSTGRES_USER: office_user
+      POSTGRES_PASSWORD: secure_password
+      POSTGRES_DB: office_addin_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U office_user -d office_addin_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - office-network
+
+  # Redis (optional for caching/sessions)
+  redis:
+    image: redis:7-alpine
+    container_name: office-redis-dev
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - office-network
+
+  # Backend API
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: base
+    container_name: office-api-dev
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://office_user:secure_password@postgres:5432/office_addin_db
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: development-jwt-secret-change-in-production
+      CORS_ORIGIN: http://localhost:3000
+      LOG_LEVEL: debug
+    ports:
+      - "3003:3003"
+      - "9464:9464"
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    command: pnpm run dev
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3003/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - office-network
+
+  # Prometheus (monitoring)
+  prometheus:
+    image: prom/prometheus:v2.45.0
+    container_name: office-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    networks:
+      - office-network
+
+  # Grafana (visualization)
+  grafana:
+    image: grafana/grafana:10.0.0
+    container_name: office-grafana
+    ports:
+      - "3003:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./docker/grafana/provisioning:/etc/grafana/provisioning:ro
+    networks:
+      - office-network
+
+volumes:
+  postgres_data:
+  redis_data:
+  prometheus_data:
+  grafana_data:
+  node_modules:
+
+networks:
+  office-network:
+    driver: bridge

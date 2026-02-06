@@ -1,0 +1,30 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "module": "ES2020",
+    "moduleResolution": "node",
+    "noUnusedParameters": true,
+    "outDir": "dist",
+    "target": "es5",
+    "lib": ["es7", "dom"],
+    "typeRoots": ["../../node_modules/@types", "node_modules/@types"],
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    },
+    "files": true
+  }
+}

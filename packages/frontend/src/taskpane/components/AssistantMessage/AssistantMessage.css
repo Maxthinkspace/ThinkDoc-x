@@ -1,0 +1,326 @@
+/* Assistant Message Container */
+.assistant-message {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+/* Header Section */
+.assistant-message-header {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 4px;
+}
+
+.assistant-message-header strong {
+  font-weight: 600;
+}
+
+/* Rationale Section */
+.assistant-message-rationale-item {
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  margin-bottom: 8px;
+}
+
+.assistant-message-rationale-header {
+  padding: 8px 12px;
+  background-color: transparent;
+  border: none;
+}
+
+.assistant-message-rationale-header:hover {
+  background-color: #f0f0f0;
+}
+
+.assistant-message-rationale-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #666;
+  font-style: italic;
+}
+
+.assistant-message-rationale-content {
+  padding: 12px;
+  font-size: 13px;
+  color: #555;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* Main Content Body */
+.assistant-message-body {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.assistant-message-content-text {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.assistant-message-content-text p {
+  margin: 0 0 8px 0;
+}
+
+.assistant-message-content-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Citation References (Inline) */
+.assistant-message-citation-reference {
+  color: #0F62FE;
+  font-size: 0.85em;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 0 2px;
+  padding: 2px 4px;
+  border-radius: 3px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  user-select: none;
+}
+
+.assistant-message-citation-reference:hover {
+  background-color: #EBF5FF;
+  color: #0050E6;
+}
+
+.assistant-message-citation-reference:active {
+  background-color: #C7E0FF;
+}
+
+.assistant-message-citation-reference:focus {
+  outline: 2px solid #0F62FE;
+  outline-offset: 2px;
+}
+
+.assistant-message-citation-inline {
+  color: #0F62FE;
+  font-size: 0.9em;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 0 2px;
+  padding: 2px 4px;
+  border-radius: 3px;
+  transition: background-color 0.2s ease;
+}
+
+.assistant-message-citation-inline:hover {
+  background-color: #EBF5FF;
+}
+
+/* Citation Tooltip */
+.assistant-message-citation-tooltip {
+  max-width: 300px;
+  padding: 8px;
+}
+
+.assistant-message-citation-tooltip-title {
+  font-weight: 600;
+  font-size: 13px;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.assistant-message-citation-tooltip-snippet {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.assistant-message-citation-tooltip-url {
+  font-size: 11px;
+  color: #0F62FE;
+  word-break: break-all;
+  margin-top: 4px;
+}
+
+/* Citations Section */
+.assistant-message-citations-section {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.assistant-message-citations-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.assistant-message-citations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.assistant-message-citation-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.assistant-message-citation-item:hover {
+  background-color: #f0f0f0;
+}
+
+.assistant-message-citation-item:focus {
+  outline: 2px solid #0F62FE;
+  outline-offset: 2px;
+}
+
+.assistant-message-citation-number {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0F62FE;
+}
+
+.assistant-message-citation-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+}
+
+.assistant-message-citation-snippet {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* Follow-up Questions */
+.assistant-message-followups {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.assistant-message-followups-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.assistant-message-followups-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.assistant-message-followup-item {
+  font-size: 13px;
+  color: #666;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  position: relative;
+  padding-left: 20px;
+}
+
+.assistant-message-followup-item::before {
+  content: "→";
+  position: absolute;
+  left: 8px;
+  color: #999;
+}
+
+.assistant-message-followup-item:hover {
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.assistant-message-followup-item:focus {
+  outline: 2px solid #0F62FE;
+  outline-offset: 2px;
+}
+
+/* Table Styling */
+.assistant-message-table-wrapper {
+  margin: 12px 0;
+  overflow-x: auto;
+}
+
+.assistant-message-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.assistant-message-table th,
+.assistant-message-table td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.assistant-message-table-header th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #e5e5e5;
+}
+
+.assistant-message-table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.assistant-message-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.assistant-message-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* List Styling */
+.assistant-message-unordered-list,
+.assistant-message-ordered-list {
+  margin: 8px 0;
+  padding-left: 24px;
+}
+
+.assistant-message-unordered-list li,
+.assistant-message-ordered-list li {
+  margin: 4px 0;
+  line-height: 1.6;
+}
+
+.assistant-message-unordered-list {
+  list-style-type: disc;
+}
+
+.assistant-message-ordered-list {
+  list-style-type: decimal;
+}
+
+/* Bold and Italic Text */
+.assistant-message-content-text strong {
+  font-weight: 600;
+  color: #333;
+}
+
+.assistant-message-content-text em {
+  font-style: italic;
+  color: #555;
+}
+

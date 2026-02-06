@@ -1,0 +1,113 @@
+:root{
+  --bg:#3a3a3a;
+  --box:#2f2f2f;
+  --text:#fff;
+  --radius:8px;
+}
+
+/* container */
+.expander{
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  width: 100%;
+}
+
+/* overall styling of the visible area */
+.expander-inner{
+  display:flex;
+  align-items:flex-start;
+  gap:6px;
+  background:var(--bg);
+  color:var(--text);
+  padding:10px 14px;
+  border-radius:var(--radius);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+/* small icon on left */
+.expander-icon{
+  flex: 0 0 auto;
+  font-size:18px;
+  line-height:1;
+}
+
+/* text area (title + expanding content) */
+.expander-text{
+  flex:1 1 auto;
+  overflow:visible;
+}
+
+/* the always-visible title line (one-liner) */
+.title{
+  margin:0;
+  font-weight:600;
+  font-size:14px;
+  line-height:1.2;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.content{
+  max-height: 0;           
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 300ms cubic-bezier(.2,.9,.2,1), opacity 220ms ease;
+}
+
+/* paragraph inside content */
+.content p{
+  margin:0;
+  margin-top: 10px;
+  font-size:13px;
+  line-height:1.45;
+  white-space:normal;
+}
+
+/* arrow on right */
+.chev{
+  flex: 0 0 20px;
+  align-self:center;
+  margin-left:8px;
+  transition: transform 220ms ease;
+  font-size:12px;
+  line-height:1;
+  opacity:0.9;
+}
+
+/* rotate arrow when open */
+.chev.rot{
+  transform: rotate(180deg);
+}
+
+/* --- Hover behavior: show content on hover (desktop) --- */
+.expander:hover .content,
+.expander:focus .content {
+  max-height: 260px;  /* large enough for content */
+  opacity: 1;
+}
+
+/* --- Click toggled class: if component has .open class, reveal content --- */
+.expander.open .content {
+  max-height: 260px;
+  opacity: 1;
+}
+
+/* subtle extra: make background a bit darker when expanded */
+.expander.open .expander-inner{
+  background: var(--box);
+  transition: background 220ms ease;
+}
+
+/* keyboard focus visible */
+.expander:focus {
+  box-shadow: 0 0 0 3px rgba(100,150,255,0.12);
+  border-radius: var(--radius);
+}
+
+/* respects reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .content, .chev { transition: none; }
+}

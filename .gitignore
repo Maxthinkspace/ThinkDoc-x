@@ -1,0 +1,22 @@
+node_modules
+dist
+.DS_Store
+*.pem
+packages/backend/certificates/localhost.pem
+packages/backend/certificates/localhost-key.pem
+
+# Cursor / IDE artifacts
+.cursor/
+
+# Claude Code artifacts
+.claude/
+CLAUDE.md
+
+# Local env files (never commit)
+**/.env.local
+**/.env.*.local
+**/.env.backup
+**/.env.bak
+
+# Frontend local npm cache artifacts (never commit)
+packages/frontend/.npm-cache/

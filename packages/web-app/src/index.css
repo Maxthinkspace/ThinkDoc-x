@@ -1,0 +1,435 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ThinkSpace - Clean Minimal Design System
+Refined, professional, with elegant typography. Inspired by Harvey AI.
+*/
+
+@layer base {
+  :root {
+    /* Clean light palette - inspired by Harvey */
+    --background: 40 10% 96%;
+    --foreground: 30 5% 15%;
+
+    /* Cards and surfaces - clean white */
+    --card: 0 0% 100%;
+    --card-foreground: 30 5% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 5% 15%;
+
+    /* Primary - warm charcoal */
+    --primary: 30 5% 20%;
+    --primary-foreground: 40 20% 98%;
+    --primary-hover: 30 5% 25%;
+
+    /* Secondary - warm gray */
+    --secondary: 40 8% 94%;
+    --secondary-foreground: 30 5% 20%;
+
+    /* Muted tones - warm neutrals */
+    --muted: 40 8% 94%;
+    --muted-foreground: 30 5% 45%;
+
+    /* Accent - subtle olive/taupe */
+    --accent: 40 8% 92%;
+    --accent-foreground: 30 5% 20%;
+
+    /* Warning/Destructive */
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 145 60% 40%;
+    --success-foreground: 0 0% 100%;
+
+    /* Borders - warm light gray */
+    --border: 40 8% 88%;
+    --input: 40 8% 90%;
+    --ring: 30 5% 50%;
+
+    /* Subtle gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(30 5% 15%), hsl(30 5% 25%));
+    --gradient-hero: linear-gradient(180deg, hsl(40 10% 98%) 0%, hsl(40 10% 95%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(40 8% 98%) 100%);
+
+    /* Soft shadows */
+    --shadow-soft: 0 2px 8px hsl(30 10% 0% / 0.04);
+    --shadow-medium: 0 4px 16px hsl(30 10% 0% / 0.06);
+    --shadow-strong: 0 8px 32px hsl(30 10% 0% / 0.08);
+
+    /* Smooth transitions */
+    --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Animation timings */
+    --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+    --radius: 0.5rem;
+
+    /* Sidebar - clean white with subtle warmth */
+    --sidebar-background: 0 0% 99%;
+    --sidebar-foreground: 30 5% 15%;
+    --sidebar-primary: 30 5% 20%;
+    --sidebar-primary-foreground: 40 20% 98%;
+    --sidebar-accent: 40 8% 94%;
+    --sidebar-accent-foreground: 30 5% 20%;
+    --sidebar-border: 40 8% 90%;
+    --sidebar-ring: 30 5% 50%;
+    --chart-1: 35 60% 55%;
+    --chart-2: 160 30% 50%;
+    --chart-3: 220 20% 45%;
+    --chart-4: 80 30% 70%;
+    --chart-5: 45 40% 65%;
+    --sidebar: 0 0% 99%;
+    --font-sans: 'DM Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-serif: 'Fraunces', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --shadow-2xs: 0 1px 2px 0px hsl(30 10% 0% / 0.03);
+    --shadow-xs: 0 1px 3px 0px hsl(30 10% 0% / 0.04);
+    --shadow-sm: 0 1px 3px 0px hsl(30 10% 0% / 0.06), 0 1px 2px -1px hsl(30 10% 0% / 0.06);
+    --shadow: 0 1px 3px 0px hsl(30 10% 0% / 0.08), 0 1px 2px -1px hsl(30 10% 0% / 0.08);
+    --shadow-md: 0 2px 6px 0px hsl(30 10% 0% / 0.08), 0 2px 4px -1px hsl(30 10% 0% / 0.06);
+    --shadow-lg: 0 4px 12px 0px hsl(30 10% 0% / 0.08), 0 4px 6px -1px hsl(30 10% 0% / 0.06);
+    --shadow-xl: 0 8px 20px 0px hsl(30 10% 0% / 0.08), 0 8px 10px -1px hsl(30 10% 0% / 0.06);
+    --shadow-2xl: 0 12px 28px 0px hsl(30 10% 0% / 0.12);
+    --tracking-normal: -0.01em;
+    --spacing: 0.25rem;
+  }
+
+  .dark {
+    --background: 30 5% 8%;
+    --foreground: 40 10% 95%;
+    --card: 30 5% 12%;
+    --card-foreground: 40 10% 95%;
+    --popover: 30 5% 12%;
+    --popover-foreground: 40 10% 95%;
+    --primary: 40 10% 92%;
+    --primary-foreground: 30 5% 12%;
+    --secondary: 30 5% 18%;
+    --secondary-foreground: 40 10% 95%;
+    --muted: 30 5% 18%;
+    --muted-foreground: 40 8% 55%;
+    --accent: 30 5% 18%;
+    --accent-foreground: 40 10% 95%;
+    --destructive: 0 55% 55%;
+    --destructive-foreground: 40 10% 95%;
+    --border: 30 5% 20%;
+    --input: 30 5% 22%;
+    --ring: 40 8% 45%;
+    --sidebar-background: 30 5% 6%;
+    --sidebar-foreground: 40 10% 95%;
+    --sidebar-primary: 40 10% 90%;
+    --sidebar-primary-foreground: 30 5% 12%;
+    --sidebar-accent: 30 5% 15%;
+    --sidebar-accent-foreground: 40 10% 95%;
+    --sidebar-border: 30 5% 18%;
+    --sidebar-ring: 40 8% 45%;
+    --chart-1: 35 50% 55%;
+    --chart-2: 160 25% 55%;
+    --chart-3: 70 25% 70%;
+    --chart-4: 280 25% 60%;
+    --chart-5: 15 35% 60%;
+    --sidebar: 30 5% 10%;
+    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.15);
+    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.2);
+    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.25), 0 1px 2px -1px hsl(0 0% 0% / 0.2);
+    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.3), 0 1px 2px -1px hsl(0 0% 0% / 0.25);
+    --shadow-md: 0 2px 6px 0px hsl(0 0% 0% / 0.3), 0 2px 4px -1px hsl(0 0% 0% / 0.2);
+    --shadow-lg: 0 4px 12px 0px hsl(0 0% 0% / 0.3), 0 4px 6px -1px hsl(0 0% 0% / 0.2);
+    --shadow-xl: 0 8px 20px 0px hsl(0 0% 0% / 0.3), 0 8px 10px -1px hsl(0 0% 0% / 0.2);
+    --shadow-2xl: 0 12px 28px 0px hsl(0 0% 0% / 0.4);
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Tech scroll animations */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 1.2s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
+  }
+
+  .fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade-in {
+    opacity: 0;
+    transition: opacity 1s var(--ease-out-expo);
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+  }
+
+  .scale-in {
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+  }
+
+  .scale-in.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .slide-in-left {
+    opacity: 0;
+    transform: translateX(-150px);
+    transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo);
+  }
+
+  .slide-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .slide-in-right {
+    opacity: 0;
+    transform: translateX(150px);
+    transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo);
+  }
+
+  .slide-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Glitch text effect */
+  .glitch-text {
+    position: relative;
+  }
+
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .glitch-text::before {
+    animation: glitch-1 0.3s infinite linear alternate-reverse;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    color: hsl(37 92% 50%);
+  }
+
+  .glitch-text::after {
+    animation: glitch-2 0.3s infinite linear alternate-reverse;
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+    color: hsl(25 90% 55%);
+  }
+
+  @keyframes glitch-1 {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(2px); }
+  }
+
+  @keyframes glitch-2 {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-2px); }
+  }
+
+  /* Staggered animation delays */
+  .delay-100 {
+    transition-delay: 100ms;
+  }
+
+  .delay-200 {
+    transition-delay: 200ms;
+  }
+
+  .delay-300 {
+    transition-delay: 300ms;
+  }
+
+  .delay-400 {
+    transition-delay: 400ms;
+  }
+
+  .delay-500 {
+    transition-delay: 500ms;
+  }
+
+  .delay-600 {
+    transition-delay: 600ms;
+  }
+
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: 0 4px 20px hsl(37 92% 50% / 0.2), 0 0 40px hsl(37 92% 50% / 0.1);
+  }
+
+  .glow-accent {
+    box-shadow: 0 4px 20px hsl(37 92% 50% / 0.2), 0 0 40px hsl(37 92% 50% / 0.1);
+  }
+
+  .text-glow {
+    text-shadow: none;
+  }
+
+  .text-glow-accent {
+    text-shadow: none;
+  }
+
+  /* Grid pattern */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(hsl(220 15% 90% / 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(220 15% 90% / 0.5) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Terminal grid */
+  .terminal-grid {
+    background-image: 
+      linear-gradient(hsl(37 92% 50% / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(37 92% 50% / 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Scan animation */
+  @keyframes scan {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+
+  .animate-scan {
+    animation: scan 8s linear infinite;
+  }
+
+  /* Scan line effect */
+  .scanlines::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      hsl(0 0% 0% / 0.03) 2px,
+      hsl(0 0% 0% / 0.03) 4px
+    );
+    pointer-events: none;
+  }
+
+  /* Hover animations */
+  .hover-glow {
+    transition: box-shadow 0.3s var(--ease-out-expo), transform 0.3s var(--ease-out-expo);
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 8px 30px hsl(37 92% 50% / 0.15);
+    transform: translateY(-2px);
+  }
+
+  /* Pulse animation */
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 0.3;
+      box-shadow: 0 4px 20px hsl(37 92% 50% / 0.15);
+    }
+    50% {
+      opacity: 0.5;
+      box-shadow: 0 8px 30px hsl(37 92% 50% / 0.25);
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  /* Floating animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Data stream animation */
+  @keyframes data-stream {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+
+  .animate-data-stream {
+    animation: data-stream 3s linear infinite;
+  }
+
+  /* Circuit line animation */
+  @keyframes circuit-flow {
+    0% {
+      stroke-dashoffset: 1000;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  .animate-circuit {
+    stroke-dasharray: 1000;
+    animation: circuit-flow 20s linear infinite;
+  }
+
+  /* Morphing gradient */
+  @keyframes morph-gradient {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-morph {
+    background-size: 400% 400%;
+    animation: morph-gradient 8s ease infinite;
+  }
+
+  /* Drag and drop touch-action fix */
+  [data-draggable-handle] {
+    touch-action: none !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+  }
+}

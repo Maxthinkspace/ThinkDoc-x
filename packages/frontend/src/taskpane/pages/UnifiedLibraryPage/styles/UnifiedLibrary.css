@@ -1,0 +1,38 @@
+.library-tabs-container {
+  padding: 0 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.library-tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.library-tab {
+  padding: 10px 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+}
+
+.library-tab:hover {
+  color: #374151;
+  background: #f9fafb;
+}
+
+.library-tab.active {
+  color: #3b82f6;
+  border-bottom-color: #3b82f6;
+  font-weight: 600;
+}
+
+.library-tab-content {
+  flex: 1;
+  overflow-y: auto;
+}
+

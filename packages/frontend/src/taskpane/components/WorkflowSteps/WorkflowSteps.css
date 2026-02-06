@@ -1,0 +1,106 @@
+.workflow-steps {
+  background: #f9f9f9;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 12px 0;
+  font-size: 13px;
+}
+
+.workflow-steps-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.workflow-steps-title {
+  font-weight: 600;
+  color: #333;
+  font-size: 13px;
+}
+
+.workflow-steps-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.workflow-steps-toggle:hover {
+  background: #f0f0f0;
+}
+
+.workflow-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.workflow-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+}
+
+.workflow-step-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.workflow-step-check {
+  color: #22c55e;
+}
+
+.workflow-step-spinner {
+  color: #4f46e5;
+}
+
+.workflow-step-pending {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #e5e5e5;
+  border: 2px solid #f5f5f5;
+}
+
+.workflow-step-name {
+  color: #666;
+  font-size: 13px;
+}
+
+.workflow-step-completed .workflow-step-name {
+  color: #333;
+}
+
+.workflow-step-in_progress .workflow-step-name {
+  color: #4f46e5;
+  font-weight: 500;
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
