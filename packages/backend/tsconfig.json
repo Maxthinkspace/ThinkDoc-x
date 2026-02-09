@@ -28,6 +28,7 @@
   },
   "include": [
     "src/**/*",
+    "api/**/*",
     "tests/**/*",
     "*.config.ts"
   ],
