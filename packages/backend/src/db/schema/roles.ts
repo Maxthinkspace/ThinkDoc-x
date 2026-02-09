@@ -23,6 +23,7 @@ export const roles = pgTable('roles', {
 // ============================================
 
 export const userRoles = pgTable('user_roles', {
+  id: uuid('id').primaryKey().default(sql`gen_random_uuid()`),
   userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
   roleId: uuid('role_id').notNull().references(() => roles.id, { onDelete: 'cascade' }),
   organizationId: uuid('organization_id').references(() => organizations.id, { onDelete: 'cascade' }),
@@ -32,7 +33,7 @@ export const userRoles = pgTable('user_roles', {
   userIdIdx: index('user_roles_user_id_idx').on(table.userId),
   roleIdIdx: index('user_roles_role_id_idx').on(table.roleId),
   organizationIdIdx: index('user_roles_organization_id_idx').on(table.organizationId),
-  uniqueUserRoleOrg: index('user_roles_unique_idx').on(table.userId, table.roleId, table.organizationId),
+  // Note: The unique constraint uses COALESCE for NULL handling, defined in raw SQL migration
 }))
 
 // ============================================
