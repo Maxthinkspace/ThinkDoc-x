@@ -1,0 +1,7 @@
+# Ignore root pnpm files to prevent package manager detection conflicts
+pnpm-lock.yaml
+pnpm-workspace.yaml
+
+# Ignore other packages
+packages/backend
+packages/frontend
