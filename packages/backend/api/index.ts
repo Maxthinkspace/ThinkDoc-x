@@ -2,12 +2,12 @@ import { Hono } from 'hono'
 import { handle } from 'hono/vercel'
 import { cors } from 'hono/cors'
 
-// Export config for Vercel
+// Export config for Vercel Edge Runtime
 export const config = {
   runtime: 'edge',
 }
 
-const app = new Hono().basePath('/api')
+const app = new Hono()
 
 // CORS
 app.use('*', cors({
@@ -25,6 +25,13 @@ app.get('/health', (c) => {
   })
 })
 
+app.get('/api/health', (c) => {
+  return c.json({
+    status: 'ok',
+    timestamp: new Date().toISOString(),
+  })
+})
+
 // Root endpoint
 app.get('/', (c) => {
   return c.json({
@@ -32,14 +39,23 @@ app.get('/', (c) => {
     version: '1.0.0',
     status: 'running',
     timestamp: new Date().toISOString(),
-    message: 'API is working! Full routes coming soon.',
+    message: 'API is working!',
   })
 })
 
-// Catch all for testing
-app.all('/*', (c) => {
+app.get('/api', (c) => {
   return c.json({
-    message: 'ThinkDoc API',
+    name: 'ThinkDoc Backend API',
+    version: '1.0.0',
+    status: 'running',
+    timestamp: new Date().toISOString(),
+  })
+})
+
+// Catch all
+app.all('*', (c) => {
+  return c.json({
+    message: 'ThinkDoc API endpoint',
     path: c.req.path,
     method: c.req.method,
   })
